@@ -1,0 +1,47 @@
+services:
+  frontend:
+    build:
+      context: ./restaurant-menu-app
+      dockerfile: Dockerfile
+    ports:
+      - "3000:80"
+    environment:
+      - REACT_APP_API_MENUS_URL=http://localhost:3002
+    volumes:
+      - /app/node_modules
+
+  api-menus:
+    build:
+      context: ./api-menus
+      dockerfile: Dockerfile
+    ports:
+      - "3002:3002"
+    environment:
+      - DB_HOST=mysql
+      - DB_USER=root
+      - DB_PASSWORD=123456
+      - DB_NAME=restaurante
+      - IS_HTTPS=false
+      - ORIGINS=http://localhost:3000,http://localhost:3002
+      - PORT=3002
+      - URL=localhost
+    volumes:
+      - ./api-menus:/app
+      - /app/node_modules
+    depends_on:
+      - mysql
+
+  mysql:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_DATABASE: restaurante
+      MYSQL_ROOT_HOST: '%'
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./sql:/docker-entrypoint-initdb.d # Monta el directorio con los scripts SQL
+
+volumes:
+  mysql-data:

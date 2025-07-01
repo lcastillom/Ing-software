@@ -1,0 +1,23 @@
+{
+  "name": "restaurant-user-api",
+  "version": "1.0.0",
+  "description": "A REST API for managing restaurant users.",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.10.9"
+  },
+  "devDependencies": {},
+  "keywords": [
+    "restaurant",
+    "api",
+    "users",
+    "nodejs"
+  ],
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,25 @@
+{
+ "name": "api-mesas",
+  "version": "1.0.0",
+  "description": "REST API para el manejo de mesas de un restaurante",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "express": "^5.1.0",
+    "mysql2": "^3.1.0",
+    "sequelize": "^6.30.0",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1",
+    "cors": "^2.8.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.0"
+  }
+}

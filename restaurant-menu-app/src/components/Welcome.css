@@ -1,0 +1,158 @@
+.welcome-container {
+  min-height: 100vh;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra el marco horizontalmente */
+  justify-content: center; /* Centra el marco verticalmente */
+  background: #fff;
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  border: 12px solid #dc2626; /* Marco rojo alrededor de toda la página */
+}
+
+.logo-top-left {
+  position: absolute;
+  top: 36px;
+  left: 36px;
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+  z-index: 10;
+}
+
+.welcome-content {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+  width: 80vw;
+  max-width: 900px;
+  background: #fff;
+  border-radius: 24px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  padding: 2rem 2.5rem;
+  box-sizing: border-box;
+}
+
+/* Pantallas grandes (desktop) */
+@media (min-width: 1024px) {
+  .welcome-content {
+    height: 80vh;
+    width: 70vw;
+    max-width: 900px;
+    padding: 2.5rem 4rem;
+  }
+  .logo-top-left {
+    top: 36px;
+    left: 36px;
+    width: 200px;
+    height: 200px;
+  }
+}
+
+/* Pantallas medianas (tablets) */
+@media (max-width: 1023px) and (min-width: 600px) {
+  .welcome-content {
+    height: 85vh;
+    width: 90vw;
+    max-width: 700px;
+    padding: 1.5rem 1.5rem;
+  }
+  .logo-top-left {
+    top: 20px;
+    left: 20px;
+    width: 60px;
+    height: 60px;
+  }
+}
+
+/* Pantallas pequeñas (móviles) */
+@media (max-width: 599px) {
+  .welcome-content {
+    height: auto;
+    width: 98vw;
+    max-width: 98vw;
+    padding: 1rem 0.5rem;
+    border-radius: 10px;
+    box-shadow: none;
+  }
+  .logo-top-left {
+    top: 10px;
+    left: 10px;
+    width: 48px;
+    height: 48px;
+  }
+  .title {
+    margin-top: 60px;
+    font-size: 1.2rem;
+  }
+  .central-img {
+    width: 128px;
+    height: 128px;
+  }
+  .description {
+    font-size: 0.95rem;
+    max-width: 95vw;
+  }
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.central-img {
+  width: 96px;
+  height: 96px;
+  object-fit: contain;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.description {
+  text-align: center;
+  color: #444;
+  margin-bottom: 1.5rem;
+  max-width: 600px;
+}
+
+.reserve-btn {
+  background: #dc2626;
+  color: #fff;
+  padding: 0.5rem 2rem;
+  border: none;
+  border-radius: 999px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.reserve-btn:hover {
+  background: #b91c1c;
+}
+/* Estilos adicionales para el botón de reserva */
+.reserve-btn {
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px; /* Botón completamente redondeado */
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
