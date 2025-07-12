@@ -7,6 +7,7 @@ services:
       - "3000:80"
     environment:
       - REACT_APP_API_MENUS_URL=http://localhost:3002
+      - REACT_APP_API_USERS_URL=http://localhost:3001
     volumes:
       - /app/node_modules
 
@@ -23,7 +24,30 @@ services:
       - DB_NAME=restaurante
       - IS_HTTPS=false
       - ORIGINS=http://localhost:3000,http://localhost:3002
+      
       - PORT=3002
+      - URL=localhost
+    volumes:
+      - ./api-menus:/app
+      - /app/node_modules
+    depends_on:
+      - mysql
+
+  api-usuarios:
+    build:
+      context: ./api-usuarios
+      dockerfile: Dockerfile
+    ports:
+      - "3001:3001"
+    environment:
+      - DB_HOST=mysql
+      - DB_USER=root
+      - DB_PASSWORD=123456
+      - DB_NAME=restaurante
+      - IS_HTTPS=false
+      - ORIGINS=http://localhost:3000,http://localhost:3001
+      
+      - PORT=3001
       - URL=localhost
     volumes:
       - ./api-menus:/app

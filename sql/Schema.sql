@@ -3,8 +3,6 @@ CREATE DATABASE IF NOT EXISTS restaurante CHARACTER SET utf8mb4 COLLATE utf8mb4_
 
 USE restaurante;
 
-DROP TABLE IF EXISTS platillos;
-
 -- Crear tabla platillos
 CREATE TABLE IF NOT EXISTS platillos (
   id INT AUTO_INCREMENT PRIMARY KEY,
@@ -14,17 +12,13 @@ CREATE TABLE IF NOT EXISTS platillos (
   categoria VARCHAR(50) NOT NULL
 );
 
-DROP TABLE IF EXISTS mesas;
-
 -- Crear tabla mesas
 CREATE TABLE IF NOT EXISTS mesas (
   id INT AUTO_INCREMENT PRIMARY KEY,
   numero INT NOT NULL,
   capacidad INT NOT NULL,
   estado ENUM('disponible', 'ocupada', 'reservada') DEFAULT 'disponible'
-  );
-  
-DROP TABLE IF EXISTS usuarios;
+);
 
 -- Crear tabla usuarios 
 CREATE TABLE IF NOT EXISTS usuarios (
@@ -35,20 +29,16 @@ CREATE TABLE IF NOT EXISTS usuarios (
   rol ENUM('cliente', 'administrador') DEFAULT 'cliente'
 );
 
-DROP TABLE IF EXISTS reservas;
-
 -- Crear tabla reservas 
 CREATE TABLE IF NOT EXISTS reservas (
   id INT AUTO_INCREMENT PRIMARY KEY,
   cliente_id INT NOT NULL,
   fecha DATETIME NOT NULL,
   numero_personas INT NOT NULL,
-  mesa_id INT NOT NULL,
+  mesa_id INT NULL,
   FOREIGN KEY (mesa_id) REFERENCES mesas(id) ON DELETE CASCADE, 
   FOREIGN KEY (cliente_id) REFERENCES usuarios(id) ON DELETE CASCADE
 );
-
-DROP TABLE IF EXISTS pedidos;
 
 -- Crear tabla pedidos
 CREATE TABLE IF NOT EXISTS pedidos (

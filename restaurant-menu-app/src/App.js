@@ -1,21 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import MenuTable from './components/MenuTable';
-import AdminMenu from './components/AdminMenu';
-import AdminLogin from './components/AdminLogin';
+import Login from './components/Login';
 import Welcome from './components/Welcome';
 import Navbar from './components/Navbar';
-import './components/PagePanel.css'; // Importa el CSS aquí
+import Register from './components/Register';
+import Reservar from './components/Reservar';
+import './components/PagePanel.css';
 
 function App() {
-  const [menu, setMenu] = useState([]);
-  const [isAdmin, setIsAdmin] = useState(false);
-
-  useEffect(() => {
-    fetch('http://localhost:3002/api/menu')
-      .then(res => res.json())
-      .then(data => setMenu(data));
-  }, []);
+  const [isAdmin, setIsAdmin] = React.useState(false);
 
   return (
     <Router>
@@ -23,15 +17,10 @@ function App() {
       <div className="page-panel">
         <Routes>
           <Route path="/" element={<Welcome />} />
-          <Route path="/menu" element={<MenuTable menu={menu} />} />
-          <Route
-            path="/admin"
-            element={
-              isAdmin
-                ? <AdminMenu menu={menu} setMenu={setMenu} setIsAdmin={setIsAdmin} />
-                : <AdminLogin setIsAdmin={setIsAdmin} />
-            }
-          />
+          <Route path="/menu" element={<MenuTable />} />
+          <Route path="/login" element={<Login setIsAdmin={setIsAdmin} /> } />
+          <Route path="/registrar" element={<Register />} />
+          <Route path="/reservar" element={<Reservar />} /> {/* Nueva ruta */}
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </div>

@@ -1,21 +1,35 @@
-class User {
-    constructor(name, email, password) {
-        this.name = name;
-        this.email = email;
-        this.password = password;
-    }
+const sequelize = require('./sequelize');
+const { DataTypes } = require('sequelize');
 
-    save() {
-        // Logic to save the user to the database
+const User = sequelize.define('User', {
+  id: {
+    type: DataTypes.INTEGER,
+    autoIncrement: true,
+    primaryKey: true
+  },
+  nombre: {
+    type: DataTypes.STRING(255),
+    allowNull: false
+  },
+  email: {
+    type: DataTypes.STRING(255),
+    allowNull: false,
+    unique: true,
+    validate: {
+      isEmail: true
     }
-
-    static findById(userId) {
-        // Logic to find a user by ID in the database
-    }
-
-    static delete(userId) {
-        // Logic to delete a user from the database
-    }
-}
+  },
+  contrasena: {
+    type: DataTypes.STRING(255),
+    allowNull: false
+  },
+  rol: {
+    type: DataTypes.ENUM('cliente', 'administrador'),
+    defaultValue: 'cliente'
+  }
+}, {
+  tableName: 'usuarios',
+  timestamps: false
+});
 
 module.exports = User;
