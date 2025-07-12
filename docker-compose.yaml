@@ -50,7 +50,7 @@ services:
       - PORT=3001
       - URL=localhost
     volumes:
-      - ./api-menus:/app
+      - ./api-usuarios:/app
       - /app/node_modules
     depends_on:
       - mysql
